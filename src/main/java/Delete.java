@@ -45,7 +45,7 @@ public class Delete extends Thread{
             }
             else{
                 tempMessage.delete();
-                channel.sendMessage("Deletion canceled.");
+                channel.sendMessage("Deletion canceled successfully.");
                 IMessage tempMessage2 = channel.getFullMessageHistory().get(0);
                 sleep(5000);
                 tempMessage2.delete();
