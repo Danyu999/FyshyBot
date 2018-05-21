@@ -4,7 +4,7 @@ public class Help {
 
     public static void fyshForHelp(IChannel channel){
         channel.sendMessage("```Use ~'command' to talk to FyshyBot \n" +
-                "--------------------------------------------- \n" +
+                "---------------------------------------------- \n" +
                 "~~COMMANDS~~\n" +
                 "~help || presents this help text \n" +
                 "~say || asks FyshyBot to say something \n" +
@@ -12,7 +12,7 @@ public class Help {
                 "\n" +
                 "~~SPECIAL PERMISSION COMMANDS~~\n" +
                 "~delete 'message' || deletes messages in the channel containing the given message \n" +
-                "--------------------------------------------- \n" +
+                "---------------------------------------------- \n" +
                 "Use ~help 'command' to see detailed info about that command```");
     }
 
@@ -51,14 +51,14 @@ public class Help {
     private static void deleteHelp(IChannel channel){
         channel.sendMessage("```Use ~delete 'message' to delete messages from the current channel that contains the message \n" +
                 "(Can also use ~remove 'message') \n" +
-                "--------------------------------------------\n" +
+                "---------------------------------------------\n" +
                 "Example: ~delete https would delete all messages in the channel with the string \"https\" \n" +
-                "--------------------------------------------\n" +
+                "---------------------------------------------\n" +
                 "This function is limited to deleting at most 100 messages at a time and at oldest 2 week old messages. " +
                         "Rerun if you want to continue deleting.\n" +
-                "--------------------------------------------\n" +
+                "---------------------------------------------\n" +
                 "Only usable in public channels.\n" +
-                "--------------------------------------------\n" +
+                "---------------------------------------------\n" +
                 "**Only usable by users" +
                 " with MANAGE_MESSAGES permission**```");
     }
