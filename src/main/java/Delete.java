@@ -37,7 +37,7 @@ public class Delete extends Thread{
                     }
                 }
                 channel.bulkDelete(messagesToBeDeleted);
-                channel.sendMessage("Deleted messages with the string \"" + deleteString + "\" Successful!");
+                channel.sendMessage("Deleted messages with the string \"" + deleteString + "\" successfully!");
                 IMessage tempMessage2 = channel.getFullMessageHistory().get(0);
                 sleep(5000);
                 tempMessage2.delete();
