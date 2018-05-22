@@ -8,6 +8,7 @@ In order to keep the privacy of FyshyBot's token, the FyshyMain.java class is no
 simply copy the following code into your main class, putting your bot's token where it says "ENTER TOKEN HERE".
 This step is REQUIRED to make the code work. Because well, otherwise you don't have a main class.
 __________________________________________________
+
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 
