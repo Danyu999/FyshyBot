@@ -112,7 +112,7 @@ public class FyshyEventHandler {
 
     private void runSay(String inputString, MessageReceivedEvent e){
         String message = inputString.substring(SAY_KEYWORD.length()).trim();
-        FyshyMain.sendMessage(message, e.getAuthor(), e.getChannel());
+        e.getChannel().sendMessage(e.getAuthor().getName() + " says: \n" + message);
     }
 
     private void runJokes(MessageReceivedEvent e){

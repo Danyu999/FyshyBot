@@ -25,6 +25,9 @@ buildNumber.properties
 .idea/**/tasks.xml
 .idea/dictionaries
 
+#Bot-specific stuff (this class includes the bot token):
+src/**/FyshyMain.java
+
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
