@@ -16,7 +16,7 @@ public class Jokes extends Thread{
         try {
             for (String s : jokesList[r.nextInt(jokesList.length)]) {
                 channel.sendMessage(s);
-                sleep(1000);
+                sleep(1250);
             }
             interrupt();
         }
