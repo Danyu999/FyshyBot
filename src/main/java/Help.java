@@ -2,13 +2,13 @@ import sx.blah.discord.handle.obj.IChannel;
 
 public class Help {
 
-    public static void fyshForHelp(IChannel channel){
-        channel.sendMessage("```Use ~'command' to talk to FyshyBot \n" +
+    public static void help(IChannel channel){
+        channel.sendMessage("```Use ~'command' to talk to "+ Main.getClient().getOurUser().getName() +" \n" +
                 "---------------------------------------------- \n" +
                 "~~COMMANDS~~\n" +
                 "~help || presents this help text \n" +
-                "~say || asks FyshyBot to say something \n" +
-                "~jokes || tells a fish joke/pun \n" +
+                "~say || asks "+ Main.getClient().getOurUser().getName() +" to say something \n" +
+                "~jokes || tells a joke/pun \n" +
                 "\n" +
                 "~~SPECIAL PERMISSION COMMANDS~~\n" +
                 "~delete 'message' || deletes messages in the channel containing the given message \n" +
@@ -16,9 +16,9 @@ public class Help {
                 "Use ~help 'command' to see detailed info about that command```");
     }
 
-    public static void fyshForHelp(String[] KEYWORDS,String[] stringArray, IChannel channel){
+    public static void help(String[] KEYWORDS,String[] stringArray, IChannel channel){
         if(stringArray.length == 1){
-            fyshForHelp(channel);
+            help(channel);
         }
         else {
             String extraCommand = stringArray[1].trim().toUpperCase();
@@ -31,7 +31,7 @@ public class Help {
             } else if (extraCommand.equals(KEYWORDS[3]) || extraCommand.equals(KEYWORDS[4])) { //Keywords = DELETE and REMOVE
                 deleteHelp(channel);
             } else {
-                fyshForHelp(channel);
+                help(channel);
             }
         }
     }
@@ -41,11 +41,11 @@ public class Help {
     }
 
     private static void sayHelp(IChannel channel){
-        channel.sendMessage("```Use ~say 'message' to ask FyshyBot to output the message```");
+        channel.sendMessage("```Use ~say 'message' to ask "+ Main.getClient().getOurUser().getName() +" to output the message```");
     }
 
     private static void jokesHelp(IChannel channel){
-        channel.sendMessage("```Use ~jokes to ask FyshyBot to tell a random fish joke/pun```");
+        channel.sendMessage("```Use ~jokes to ask "+ Main.getClient().getOurUser().getName() +" to tell a random joke/pun```");
     }
 
     private static void deleteHelp(IChannel channel){

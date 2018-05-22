@@ -8,9 +8,9 @@ import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.handle.obj.StatusType;
 
 /*
-This class handles events from Discord that FyshyBot knows how to process
+This class handles events from Discord that the bot knows how to process
  */
-public class FyshyEventHandler {
+public class EventHandler {
     private final static String COMMAND_PROMPT = "~";
     private final static String HELP_KEYWORD = "HELP";
     private final static String SAY_KEYWORD = "SAY";
@@ -21,20 +21,22 @@ public class FyshyEventHandler {
 
     @EventSubscriber
     public void onReady(ReadyEvent r){
-        FyshyMain.getClient().changePresence(StatusType.ONLINE, ActivityType.PLAYING, "~help");
-        guilds = new Guilds(FyshyMain.getClient().getGuilds());
-        FyshyUser creator = guilds.getAllUsers().getFyshyUserByName("Danyu\uD83C\uDF43");
+        Main.getClient().changePresence(StatusType.ONLINE, ActivityType.PLAYING, "~help");
+        guilds = new Guilds(Main.getClient().getGuilds());
+        /*
+        User creator = guilds.getAllUsers().getUserByName("Danyu\uD83C\uDF43");
         if(creator != null){}
         else{
             for(Guild g : guilds.getGuilds()){
                 g.getDefaultTextChannel().sendMessage("```css\nWHERE IS MY CREATOR???```");
             }
         }
+        */
     }
     @EventSubscriber
     public void userJoinEvent(UserJoinEvent u){
         guilds.getAllUsers().addUser(u.getUser());
-        guilds.getGuild(u.getGuild()).getFyshyUsers().addUser(u.getUser());
+        guilds.getGuild(u.getGuild()).getUsers().addUser(u.getUser());
         guilds.getGuild(u.getGuild()).getDefaultTextChannel().sendMessage("Welcome to " + u.getGuild().getName() + "! " + u.getUser());
     }
 
@@ -50,22 +52,22 @@ public class FyshyEventHandler {
             if (e.getMessage().getContent().substring(0, 1).equals(COMMAND_PROMPT)) {
                 if (!runCommand(e)) {
                     e.getChannel().sendMessage("Please use " + COMMAND_PROMPT + HELP_KEYWORD.toLowerCase() +
-                            " to sea FyshyBot commands.");
+                            " to sea " + Main.getClient().getOurUser().getName() + " commands.");
                 }
             }
         }
     }
 
     private void saveUserInput(MessageReceivedEvent e, boolean isPrivate){
-        FyshyUser user;
+        User user;
         if(isPrivate){
-            user = guilds.getAllUsers().getFyshyUserByUser(e.getAuthor());
+            user = guilds.getAllUsers().getUserByID(e.getAuthor());
         }
         else{
-            user = guilds.getGuild(e.getGuild()).getFyshyUsers().getFyshyUserByUser(e.getAuthor());
+            user = guilds.getGuild(e.getGuild()).getUsers().getUserByID(e.getAuthor());
         }
         if (user == null) {
-            e.getChannel().sendMessage("User is not registered. (FyshyEventHandler Class)");
+            e.getChannel().sendMessage("User is not registered. (EventHandler Class)");
         } else {
             if (user.getWaitingForInput()) {
                 user.setInput(e.getMessage());
@@ -107,7 +109,7 @@ public class FyshyEventHandler {
     }
 
     private void runHelp(String[] inputArray, MessageReceivedEvent e){
-        Help.fyshForHelp(KEYWORDS, inputArray, e.getChannel());
+        Help.help(KEYWORDS, inputArray, e.getChannel());
     }
 
     private void runSay(String inputString, MessageReceivedEvent e){

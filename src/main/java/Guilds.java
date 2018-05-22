@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guilds {
-    private FyshyUsers allUsers;
+    private Users allUsers;
     private ArrayList<Guild> guilds;
 
     public Guilds(List<IGuild> guilds){
-        allUsers = new FyshyUsers();
+        allUsers = new Users();
         allUsers.addUsers(guilds);
         this.guilds = new ArrayList<Guild>();
         for(IGuild g : guilds){
@@ -16,7 +16,7 @@ public class Guilds {
         }
     }
 
-    public FyshyUsers getAllUsers() {
+    public Users getAllUsers() {
         return allUsers;
     }
 

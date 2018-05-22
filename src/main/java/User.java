@@ -1,12 +1,12 @@
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
 
-public class FyshyUser {
+public class User {
     private IUser user;
     private IMessage input;
     private boolean waitingForInput;
 
-    public FyshyUser(IUser user){
+    public User(IUser user){
         this.user = user;
         waitingForInput = false;
         input = null;

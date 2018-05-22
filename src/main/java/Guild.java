@@ -6,11 +6,11 @@ public class Guild {
     private IChannel defaultTextChannel;
     private IVoiceChannel defaultVoiceChannel;
     private IGuild guildID;
-    private FyshyUsers guildUsers;
+    private Users guildUsers;
 
     public Guild(IGuild guild){
         guildID = guild;
-        guildUsers = new FyshyUsers();
+        guildUsers = new Users();
         guildUsers.addUsers(guild);
         defaultTextChannel = guild.getDefaultChannel();
         defaultVoiceChannel = guild.getVoiceChannels().get(0);
@@ -20,7 +20,7 @@ public class Guild {
         return guildID;
     }
 
-    public FyshyUsers getFyshyUsers() {
+    public Users getUsers() {
         return guildUsers;
     }
 

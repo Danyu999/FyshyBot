@@ -59,7 +59,7 @@ public class Delete extends Thread{
 
     private boolean testYesOrNo() throws InterruptedException{
         String[] targetInputs = {"yes","no","y","n"};
-        FyshyUser user = FyshyEventHandler.guilds.getGuild(channel.getGuild()).getFyshyUsers().getFyshyUserByUser(author);
+        User user = EventHandler.guilds.getGuild(channel.getGuild()).getUsers().getUserByID(author);
         if(user == null){
             channel.sendMessage("User is not registered. (Delete Class)");
         }

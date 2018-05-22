@@ -26,7 +26,7 @@ buildNumber.properties
 .idea/dictionaries
 
 #Bot-specific stuff (this class includes the bot token):
-src/**/FyshyMain.java
+src/**/Main.java
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

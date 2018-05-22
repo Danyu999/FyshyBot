@@ -4,9 +4,9 @@ public class WaitForUserInput extends Thread{
     private String userInput;
     private String[] targetInputs;
     private IChannel channel;
-    private FyshyUser user;
+    private User user;
 
-    public WaitForUserInput(FyshyUser user, IChannel channel, String[] targetInputs){
+    public WaitForUserInput(User user, IChannel channel, String[] targetInputs){
         this.channel = channel;
         this.userInput = "";
         this.targetInputs = targetInputs;
