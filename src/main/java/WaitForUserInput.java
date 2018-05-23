@@ -1,16 +1,19 @@
 import sx.blah.discord.handle.obj.IChannel;
 
 public class WaitForUserInput extends Thread{
+    private static final long sleepPeriod = 1000;
+    private long timeoutPeriod;
     private String userInput;
     private String[] targetInputs;
     private IChannel channel;
     private User user;
 
-    public WaitForUserInput(User user, IChannel channel, String[] targetInputs){
+    public WaitForUserInput(User user, IChannel channel, String[] targetInputs, long timeOutPeriod){
         this.channel = channel;
         this.userInput = "";
         this.targetInputs = targetInputs;
         this.user = user;
+        this.timeoutPeriod = timeOutPeriod;
     }
 
     private boolean checkMatchInputs(){
@@ -28,12 +31,19 @@ public class WaitForUserInput extends Thread{
             return;
         }
         try {
+            long timeoutCounter = 0;
             while (!checkMatchInputs()) {
                 user.setWaitingForInput(true);
                 if(user.getInput() != null && user.getInput().getChannel() == channel) {
                     userInput = user.getInput().getContent();
                 }
-                sleep(1000);
+                sleep(sleepPeriod);
+                timeoutCounter += sleepPeriod;
+                if(timeoutCounter >= timeoutPeriod){
+                    channel.sendMessage("Waited for valid response for " + timeoutPeriod/1000 + " seconds. Process cancelled!");
+                    user.setInput(channel.getFullMessageHistory().getLatestMessage());
+                    break;
+                }
             }
             user.setWaitingForInput(false);
             interrupt();

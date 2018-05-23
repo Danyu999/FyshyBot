@@ -16,7 +16,7 @@ public class Jokes extends Thread{
         try {
             for (String s : jokesList[r.nextInt(jokesList.length)]) {
                 channel.sendMessage(s);
-                sleep(1250);
+                sleep(1500);
             }
             interrupt();
         }
@@ -24,7 +24,7 @@ public class Jokes extends Thread{
     }
 
     private static void initJokes(){
-        jokesList[0] = new String[]{Main.getClient().getOurUser().getName() + " Attack!", "*splash splash*", "It wasn't very effective..."};
+        jokesList[0] = new String[]{Config.getClient().getOurUser().getName() + " Attack!", "*splash splash*", "It wasn't very effective..."};
         jokesList[1] = new String[]{"Why are fish always so smart?", "Because... They're always in school!!!"};
         jokesList[2] = new String[]{"Why did the fish cross the road?", "It didn't! Fish can't walk!"};
         jokesList[3] = new String[]{"If you think of a better fish pun,", "Let minnow."};

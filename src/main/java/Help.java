@@ -3,14 +3,15 @@ import sx.blah.discord.handle.obj.IChannel;
 public class Help {
 
     public static void help(IChannel channel){
-        channel.sendMessage("```Use ~'command' to talk to "+ Main.getClient().getOurUser().getName() +" \n" +
+        channel.sendMessage("```Use ~'command' to talk to "+ Config.getClient().getOurUser().getName() +" \n" +
                 "---------------------------------------------- \n" +
-                "~~COMMANDS~~\n" +
+                "--COMMANDS--\n" +
                 "~help || presents this help text \n" +
-                "~say || asks "+ Main.getClient().getOurUser().getName() +" to say something \n" +
+                "~info || presents info about the creator and " + Config.getClient().getOurUser().getName() + "\n" +
+                "~say || asks "+ Config.getClient().getOurUser().getName() +" to say something \n" +
                 "~jokes || tells a joke/pun \n" +
                 "\n" +
-                "~~SPECIAL PERMISSION COMMANDS~~\n" +
+                "--SPECIAL PERMISSION COMMANDS--\n" +
                 "~delete 'message' || deletes messages in the channel containing the given message \n" +
                 "---------------------------------------------- \n" +
                 "Use ~help 'command' to see detailed info about that command```");
@@ -24,11 +25,13 @@ public class Help {
             String extraCommand = stringArray[1].trim().toUpperCase();
             if (extraCommand.equals(KEYWORDS[0])) { //Keyword = HELP
                 helpHelp(channel);
-            } else if (extraCommand.equals(KEYWORDS[1])) { //Keyword = SAY
+            } else if(extraCommand.equals(KEYWORDS[1])){ //Keyword = INFO
+                infoHelp(channel);
+            } else if (extraCommand.equals(KEYWORDS[2])) { //Keyword = SAY
                 sayHelp(channel);
-            } else if (extraCommand.equals(KEYWORDS[2])) { //Keyword = JOKES
+            } else if (extraCommand.equals(KEYWORDS[3])) { //Keyword = JOKES
                 jokesHelp(channel);
-            } else if (extraCommand.equals(KEYWORDS[3]) || extraCommand.equals(KEYWORDS[4])) { //Keywords = DELETE and REMOVE
+            } else if (extraCommand.equals(KEYWORDS[4]) || extraCommand.equals(KEYWORDS[5])) { //Keywords = DELETE and REMOVE
                 deleteHelp(channel);
             } else {
                 help(channel);
@@ -40,12 +43,16 @@ public class Help {
         channel.sendMessage("```Use ~help to see a list of commands ||| Use ~help 'command' to see detailed info about that command```");
     }
 
+    private static void infoHelp(IChannel channel){
+        channel.sendMessage("```Use ~info to see info about the creator and " + Config.getClient().getOurUser().getName() + ".```");
+    }
+
     private static void sayHelp(IChannel channel){
-        channel.sendMessage("```Use ~say 'message' to ask "+ Main.getClient().getOurUser().getName() +" to output the message```");
+        channel.sendMessage("```Use ~say 'message' to ask "+ Config.getClient().getOurUser().getName() +" to output the message```");
     }
 
     private static void jokesHelp(IChannel channel){
-        channel.sendMessage("```Use ~jokes to ask "+ Main.getClient().getOurUser().getName() +" to tell a random joke/pun```");
+        channel.sendMessage("```Use ~jokes to ask "+ Config.getClient().getOurUser().getName() +" to tell a random joke/pun```");
     }
 
     private static void deleteHelp(IChannel channel){
@@ -56,6 +63,10 @@ public class Help {
                 "---------------------------------------------\n" +
                 "This function is limited to deleting at most 100 messages at a time and at oldest 2 week old messages. " +
                         "Rerun if you want to continue deleting.\n" +
+                "---------------------------------------------\n" +
+                "May take a bit to run due to the taxing process of getting message history from discord.\n" +
+                "---------------------------------------------\n" +
+                "The delete function times out after 15 seconds if you don't confirm the deletion.\n" +
                 "---------------------------------------------\n" +
                 "Only usable in public channels.\n" +
                 "---------------------------------------------\n" +

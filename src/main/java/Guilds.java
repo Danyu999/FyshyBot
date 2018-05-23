@@ -7,12 +7,15 @@ public class Guilds {
     private Users allUsers;
     private ArrayList<Guild> guilds;
 
-    public Guilds(List<IGuild> guilds){
+    public Guilds(){
         allUsers = new Users();
-        allUsers.addUsers(guilds);
-        this.guilds = new ArrayList<Guild>();
-        for(IGuild g : guilds){
-            this.guilds.add(new Guild(g));
+        guilds = new ArrayList<Guild>();
+    }
+
+    public void addGuild(IGuild guild){
+        if(getGuild(guild) == null) {
+            guilds.add(new Guild(guild));
+            allUsers.addUsers(guild);
         }
     }
 
