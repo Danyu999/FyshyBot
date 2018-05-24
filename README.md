@@ -1,5 +1,5 @@
 # FyshyBot
-A Discord bot that does random things.
+A Discord bot that has social and server management features.
 
 Coded using IntelliJ, Maven, and Discord4J
 
