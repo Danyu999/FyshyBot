@@ -1,5 +1,7 @@
 # FyshyBot
-A Discord bot that has social and server management features.
+A Discord bot that has social and server management features. Currently, doesn't really do anything.
+
+My personal project to experiment with creating bots for discord.
 
 Coded using IntelliJ, Maven, and Discord4J
 
