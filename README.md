@@ -18,16 +18,25 @@ Only change necessary to make the bot work is adding in a token.
 **HELP**
 ---------
 Use ~'command' to talk to A Fyshy Bot 
+
 ---------------------------------------------- 
+
 --COMMANDS--
+
 ~help || presents this help text 
+
 ~info || presents info about the creator and A Fyshy Bot
+
 ~say || asks A Fyshy Bot to say something 
+
 ~jokes || tells a joke/pun 
 
 --SPECIAL PERMISSION COMMANDS--
+
 ~delete 'message' || deletes messages in the channel containing the given message 
+
 ---------------------------------------------- 
+
 Use ~help 'command' to see detailed info about that command
 
 ---------
